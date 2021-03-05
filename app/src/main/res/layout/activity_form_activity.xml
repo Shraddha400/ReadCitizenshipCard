@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.FormActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#0C509E"
+        >
+        <TextView
+            android:id="@+id/title_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#41ACA8"
+            android:paddingStart="15dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="15dp"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:text="Your Form is ready"
+            android:textColor="#FAFAFA"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_generalInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_info">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!--                    <ImageView-->
+                <!--                        android:id="@+id/add_citizenship_card"-->
+                <!--                        android:layout_width="80dp"-->
+                <!--                        android:layout_height="80dp"-->
+                <!--                        android:layout_marginStart="20dp"-->
+                <!--                        android:layout_marginTop="5dp"-->
+                <!--                        android:src="@drawable/ic_baseline_cloud_upload_24"-->
+                <!--                        app:layout_constraintStart_toStartOf="parent"-->
+                <!--                        app:layout_constraintTop_toTopOf="parent" />-->
+
+                <!--                    <TextView-->
+                <!--                        android:id="@+id/add_image_text"-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginStart="5dp"-->
+                <!--                        android:text="Add Citizenship Photo"-->
+                <!--                        android:textSize="12sp"-->
+                <!--                        app:layout_constraintStart_toStartOf="parent"-->
+                <!--                        app:layout_constraintTop_toBottomOf="@id/add_citizenship_card" />-->
+
+                <!--                    <ImageView-->
+                <!--                        android:id="@+id/add_pp_size_photo"-->
+                <!--                        android:layout_width="80dp"-->
+                <!--                        android:layout_height="80dp"-->
+                <!--                        android:layout_marginTop="5dp"-->
+                <!--                        android:layout_marginEnd="20dp"-->
+                <!--                        android:src="@drawable/ic_baseline_cloud_upload_24"-->
+                <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+                <!--                        app:layout_constraintTop_toTopOf="parent" />-->
+
+                <!--                    <TextView-->
+                <!--                        android:id="@+id/add_ppsize_text"-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginEnd="5dp"-->
+                <!--                        android:text="Add Pp Size Photo"-->
+                <!--                        android:textSize="12sp"-->
+                <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+                <!--                        app:layout_constraintTop_toBottomOf="@+id/add_pp_size_photo" />-->
+                <EditText
+                    android:id="@+id/branch_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:drawableEnd="@drawable/bank_icon"
+                    android:hint="Enter Branch Name"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/name_citz_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/branch_name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/name_citz"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_baseline_edit_24"
+                        android:drawablePadding="15dp"
+                        android:hint="Full Name"
+                        android:padding="8dp"
+                        android:textSize="12sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/permanent_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="#0C509E"
+                    android:padding="4dp"
+                    android:text="Permanent Address"
+                    android:textColor="#FBFBF9"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/name_citz_layout" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/permanent_district_ctiz_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/permanent_address">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/permanent_district_ctiz"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_baseline_add_location_alt_24"
+                        android:drawablePadding="15dp"
+                        android:hint="District"
+                        android:padding="8dp"
+                        android:textSize="12sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/permanent_municipality_ctiz_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/permanent_district_ctiz_layout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/permanent_municipality_address_ctiz"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_baseline_add_location_alt_24"
+                        android:drawablePadding="15dp"
+                        android:hint="Municipality"
+                        android:padding="8dp"
+                        android:textSize="12sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/permanent_ward_ctiz_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/permanent_municipality_ctiz_layout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/permanent_ward_address_ctiz"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_baseline_add_location_alt_24"
+                        android:drawablePadding="15dp"
+                        android:hint="Ward Number"
+                        android:padding="8dp"
+                        android:textSize="12sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/temporary_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="#0C509E"
+                    android:padding="4dp"
+                    android:text="Temporary Address"
+                    android:textColor="#FBFBF9"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/permanent_ward_ctiz_layout" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/temporary_district_ctiz_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/temporary_address">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/temporary_district_ctiz"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_baseline_add_location_alt_24"
+                        android:drawablePadding="15dp"
+                        android:hint="District"
+                        android:padding="8dp"
+                        android:textSize="12sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/temporary_municipality_ctiz_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/temporary_district_ctiz_layout"
+
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/temporary_municipality_address_ctiz"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_baseline_add_location_alt_24"
+                        android:drawablePadding="15dp"
+                        android:hint="Municipality"
+                        android:padding="8dp"
+                        android:textSize="12sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/temporary_ward_ctiz_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/temporary_municipality_ctiz_layout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/temporary_ward_address_ctiz"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_baseline_add_location_alt_24"
+                        android:drawablePadding="15dp"
+                        android:hint="Ward Number"
+                        android:padding="8dp"
+                        android:textSize="12sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/sex_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Gender"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/temporary_ward_ctiz_layout" />
+
+                <RadioGroup
+                    android:id="@+id/sex_radio_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkedButton="@id/female_radio_btn"
+                    android:orientation="horizontal"
+                    android:padding="5dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sex_text">
+
+                    <RadioButton
+                        android:id="@+id/female_radio_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="5dp"
+                        android:text="Female"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/male_radio_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="50dp"
+                        android:paddingLeft="5dp"
+                        android:text="Male"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/others_radio_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="50dp"
+                        android:paddingLeft="5dp"
+                        android:text="Others"
+                        android:textSize="12sp" />
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/relationship_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Relationship Status"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sex_radio_btn" />
+
+                <RadioGroup
+                    android:id="@+id/relationship_radio_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkedButton="@id/relationship_married_radio_btn"
+                    android:orientation="horizontal"
+                    android:padding="5dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/relationship_text">
+
+                    <RadioButton
+                        android:id="@+id/relationship_married_radio_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="5dp"
+                        android:text="Married"
+
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/relationship_unmarried_radio_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="45dp"
+                        android:paddingLeft="5dp"
+                        android:text="Unmarried"
+
+                        android:textSize="12sp" />
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/date_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="#0C509E"
+                    android:drawablePadding="4dp"
+                    android:padding="4dp"
+                    android:text="Date of Birth(AD)"
+                    android:textColor="#FBFBF9"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/relationship_radio_btn" />
+
+                <EditText
+                    android:id="@+id/edit_date_picker_full"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:drawableEnd="@drawable/ic_baseline_calendar_today_24"
+                    android:hint="DD/MM/YYYY"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/date_text" />
+
+                <TextView
+                    android:id="@+id/contact_info_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="#0C509E"
+                    android:padding="4dp"
+                    android:text="Contact Information"
+                    android:textColor="#FBFBF9"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edit_date_picker_full" />
+
+                <EditText
+                    android:id="@+id/mobile_number1"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/mobile_icon"
+                    android:hint="Mobile No 1:"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/contact_info_title" />
+
+                <EditText
+                    android:id="@+id/mobile_number2"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/mobile_icon"
+                    android:drawablePadding="4dp"
+                    android:hint="Mobile No 2:"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/contact_info_title" />
+
+                <EditText
+                    android:id="@+id/landline_number1"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/landline_"
+                    android:drawablePadding="4dp"
+                    android:hint="Landline No 1:"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/mobile_number1" />
+
+                <EditText
+                    android:id="@+id/landline_number2"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/landline_"
+                    android:drawablePadding="4dp"
+                    android:hint="Landline No 2:"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/mobile_number2" />
+
+                <EditText
+                    android:id="@+id/email_text"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Email:"
+                    android:textSize="12sp"
+                    android:drawableEnd="@drawable/ic_baseline_email_24"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/landline_number2" />
+
+                <TextView
+                    android:id="@+id/education_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="#0C509E"
+                    android:padding="4dp"
+                    android:text="Education"
+                    android:textColor="#FBFBF9"
+                    android:textSize="15sp"
+                    app:layout_constraintTop_toBottomOf="@+id/email_text" />
+
+                <Spinner
+                    android:id="@+id/education_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/education_info" />
+
+                <TextView
+                    android:id="@+id/nationality_info_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="#0C509E"
+                    android:padding="4dp"
+                    android:text="Nationality"
+                    android:textColor="#FBFBF9"
+                    android:textSize="15sp"
+                    app:layout_constraintTop_toBottomOf="@+id/education_spinner" />
+
+                <EditText
+                    android:id="@+id/add_nationality_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nationality"
+                    android:textSize="12sp"
+                    app:layout_constraintTop_toBottomOf="@+id/nationality_info_text" />
+
+                <TextView
+                    android:id="@+id/map_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#0C509E"
+                    android:padding="4dp"
+                    android:text="Your NearBy Location"
+                    android:textColor="#FBFBF9"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/add_nationality_info" />
+
+                <fragment
+                    android:id="@+id/mapNearBy"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="600dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/map_text"
+                    tools:context=".ui.MainActivity" />
+
+                <Button
+                    android:id="@+id/submit_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/button_background"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="2dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="2dp"
+                    android:text="Submit"
+                    android:textAllCaps="false"
+                    android:textColor="#FBFBF9"
+                    android:textSize="15sp"
+                    android:gravity="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/mapNearBy" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+
