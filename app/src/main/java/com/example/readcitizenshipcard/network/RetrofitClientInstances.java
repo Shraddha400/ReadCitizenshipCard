@@ -2,6 +2,8 @@ package com.example.readcitizenshipcard.network;
 
 import com.example.readcitizenshipcard.utils.Constants;
 
+import java.util.concurrent.TimeUnit;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -14,7 +16,10 @@ public class RetrofitClientInstances {
 
             HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-            OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .connectTimeout(5, TimeUnit.MINUTES)
+                    .readTimeout(5, TimeUnit.MINUTES)
+                    .addInterceptor(interceptor).build();
 
             retrofit = new retrofit2.Retrofit.Builder()
                     .baseUrl(Constants.BASE_URL)

@@ -5,20 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.FormActivity">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#0C509E"
-        >
+        android:layout_height="match_parent">
+
         <TextView
             android:id="@+id/title_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#41ACA8"
+            android:gravity="center"
             android:paddingStart="15dp"
             android:paddingTop="8dp"
             android:paddingEnd="15dp"
-            android:gravity="center"
             android:paddingBottom="8dp"
             android:text="Your Form is ready"
             android:textColor="#FAFAFA"
@@ -93,13 +93,43 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/name_citz_layout"
+                    android:id="@+id/citz_number_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    app:errorEnabled="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/branch_name">
+                    app:layout_constraintTop_toBottomOf="@+id/branch_name"
+                    tools:ignore="MissingConstraints">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/citizenship_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Citizenship Number"
+                        android:inputType="text"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/name_citz_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    app:errorEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/citz_number_layout"
+                    tools:ignore="MissingConstraints">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/name_citz"
@@ -108,6 +138,7 @@
                         android:drawableStart="@drawable/ic_baseline_edit_24"
                         android:drawablePadding="15dp"
                         android:hint="Full Name"
+                        android:inputType="text"
                         android:padding="8dp"
                         android:textSize="12sp" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -116,7 +147,6 @@
                     android:id="@+id/permanent_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
                     android:background="#0C509E"
                     android:padding="4dp"
                     android:text="Permanent Address"
@@ -128,9 +158,14 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/permanent_district_ctiz_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:hint="District"
+                    app:errorEnabled="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/permanent_address">
@@ -141,16 +176,19 @@
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/ic_baseline_add_location_alt_24"
                         android:drawablePadding="15dp"
-                        android:hint="District"
                         android:padding="8dp"
                         android:textSize="12sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/permanent_municipality_ctiz_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:hint="Municipality"
+                    app:errorEnabled="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/permanent_district_ctiz_layout">
@@ -161,16 +199,19 @@
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/ic_baseline_add_location_alt_24"
                         android:drawablePadding="15dp"
-                        android:hint="Municipality"
                         android:padding="8dp"
                         android:textSize="12sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/permanent_ward_ctiz_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:hint="Ward Number"
+                    app:errorEnabled="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/permanent_municipality_ctiz_layout">
@@ -181,7 +222,7 @@
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/ic_baseline_add_location_alt_24"
                         android:drawablePadding="15dp"
-                        android:hint="Ward Number"
+
                         android:padding="8dp"
                         android:textSize="12sp" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -190,21 +231,26 @@
                     android:id="@+id/temporary_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
                     android:background="#0C509E"
                     android:padding="4dp"
                     android:text="Temporary Address"
                     android:textColor="#FBFBF9"
                     android:textSize="15sp"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/permanent_ward_ctiz_layout" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/temporary_district_ctiz_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:hint="District"
+                    app:errorEnabled="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/temporary_address">
@@ -215,16 +261,20 @@
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/ic_baseline_add_location_alt_24"
                         android:drawablePadding="15dp"
-                        android:hint="District"
+
                         android:padding="8dp"
                         android:textSize="12sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/temporary_municipality_ctiz_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:hint="Municipality"
+                    app:errorEnabled="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/temporary_district_ctiz_layout"
@@ -237,16 +287,20 @@
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/ic_baseline_add_location_alt_24"
                         android:drawablePadding="15dp"
-                        android:hint="Municipality"
+
                         android:padding="8dp"
                         android:textSize="12sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/temporary_ward_ctiz_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:hint="Ward Number"
+                    app:errorEnabled="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/temporary_municipality_ctiz_layout">
@@ -257,7 +311,6 @@
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/ic_baseline_add_location_alt_24"
                         android:drawablePadding="15dp"
-                        android:hint="Ward Number"
                         android:padding="8dp"
                         android:textSize="12sp" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -278,7 +331,7 @@
                     android:id="@+id/sex_radio_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checkedButton="@id/female_radio_btn"
+                    android:checkedButton="@id/male_radio_btn"
                     android:orientation="horizontal"
                     android:padding="5dp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -327,7 +380,7 @@
                     android:id="@+id/relationship_radio_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checkedButton="@id/relationship_married_radio_btn"
+                    android:checkedButton="@id/relationship_unmarried_radio_btn"
                     android:orientation="horizontal"
                     android:padding="5dp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -370,16 +423,40 @@
                     app:layout_constraintTop_toBottomOf="@+id/relationship_radio_btn" />
 
                 <EditText
-                    android:id="@+id/edit_date_picker_full"
+                    android:id="@+id/edit_date_year"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:drawableEnd="@drawable/ic_baseline_calendar_today_24"
-                    android:hint="DD/MM/YYYY"
+                    android:hint="YYYY"
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/date_text" />
+
+                <EditText
+                    android:id="@+id/edit_date_month"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:drawableEnd="@drawable/ic_baseline_calendar_today_24"
+                    android:hint="MM"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edit_date_year" />
+
+                <EditText
+                    android:id="@+id/edit_date_day"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:drawableEnd="@drawable/ic_baseline_calendar_today_24"
+                    android:hint="DD"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edit_date_month" />
 
                 <TextView
                     android:id="@+id/contact_info_title"
@@ -392,7 +469,7 @@
                     android:textColor="#FBFBF9"
                     android:textSize="15sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/edit_date_picker_full" />
+                    app:layout_constraintTop_toBottomOf="@+id/edit_date_day" />
 
                 <EditText
                     android:id="@+id/mobile_number1"
@@ -441,9 +518,9 @@
                     android:id="@+id/email_text"
                     android:layout_width="160dp"
                     android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/ic_baseline_email_24"
                     android:hint="Email:"
                     android:textSize="12sp"
-                    android:drawableEnd="@drawable/ic_baseline_email_24"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/landline_number2" />
 
@@ -463,6 +540,14 @@
                     android:id="@+id/education_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:textAlignment="viewStart"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:spinnerMode="dialog"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/education_info" />
 
                 <TextView
@@ -498,26 +583,89 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/add_nationality_info" />
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/source_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="5dp"
+                    app:errorEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/map_text">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/source"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_baseline_map_24"
+                        android:drawablePadding="15dp"
+                        android:hint="Source Location"
+                        android:padding="8dp"
+                        android:textSize="12sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/destination_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    app:errorEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/source_layout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/destination"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_baseline_map_24"
+                        android:drawablePadding="15dp"
+                        android:hint="Destination Location"
+                        android:inputType="text"
+                        android:padding="8dp"
+                        android:textSize="12sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/distance_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/destination_layout" />
+
                 <fragment
                     android:id="@+id/mapNearBy"
                     android:name="com.google.android.gms.maps.SupportMapFragment"
                     android:layout_width="match_parent"
-                    android:layout_height="600dp"
-                    android:layout_margin="5dp"
+                    android:layout_height="500dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/map_text"
+                    app:layout_constraintTop_toBottomOf="@id/distance_text"
                     tools:context=".ui.MainActivity" />
 
                 <Button
                     android:id="@+id/submit_button"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_height="50dp"
                     android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@drawable/button_background"
+                    android:gravity="center"
                     android:paddingLeft="15dp"
                     android:paddingTop="2dp"
                     android:paddingRight="15dp"
@@ -526,7 +674,6 @@
                     android:textAllCaps="false"
                     android:textColor="#FBFBF9"
                     android:textSize="15sp"
-                    android:gravity="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

@@ -6,18 +6,63 @@
     android:layout_height="match_parent"
     tools:context=".ui.BackTextRecogActivity"
     android:background="@color/white">
-
-    <fragment
-        android:id="@+id/fragment3"
-        class="com.example.readcitizenshipcard.ui.FragmentBackFace"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/text"
+        android:text="Upload Citizenship (Back)"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginTop="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="170dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout="@layout/fragment_back_face_activity" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/citizenship_back_layout"
+        android:layout_width="350dp"
+        android:layout_height="250dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/dotted_design_rectangles"
+        app:layout_constraintTop_toBottomOf="@+id/text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <ImageView
+            android:id="@+id/citizenship_back_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:layout_margin="5dp"
+            android:src="@drawable/ic_baseline_add_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/info_text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Please Add Clear Image"
+            android:layout_margin="5dp"
+            android:textSize="12sp"
+            android:textColor="@color/light_blue_A200"
+            app:layout_constraintTop_toBottomOf="@+id/citizenship_back_pic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/citizenship_back_layout"/>
     <Button
         android:id="@+id/done_btn2"
         android:layout_width="350dp"
@@ -30,6 +75,7 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18sp"
+        android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

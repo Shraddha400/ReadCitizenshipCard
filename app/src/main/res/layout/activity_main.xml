@@ -6,43 +6,130 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".ui.MainActivity">
-
-    <fragment
-        android:id="@+id/fragment1"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/text1"
+        android:text="Upload Citizenship (Front)"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        class= "com.example.readcitizenshipcard.ui.FragmentFrontCitizenship"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/citizenship_layout"
+        android:layout_width="350dp"
+        android:layout_height="250dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/dotted_design_rectangles"
+        app:layout_constraintTop_toBottomOf="@+id/text1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <ImageView
+            android:id="@+id/citizenship_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:layout_margin="5dp"
+            android:src="@drawable/ic_baseline_add_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/info_text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Please Add Clear Image"
+            android:layout_margin="5dp"
+            android:textSize="12sp"
+            android:textColor="@color/light_blue_A200"
+            app:layout_constraintTop_toBottomOf="@+id/citizenship_pic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/text2"
+        android:layout_marginTop="20dp"
+        android:text="Upload Passport Size Photo"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/citizenship_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/const_pp_size_layout"
+        android:layout_width="350dp"
+        android:layout_height="250dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/dotted_design_rectangles"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text2">
+
+        <ImageView
+            android:id="@+id/pp_size_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:layout_margin="5dp"
+            android:src="@drawable/ic_baseline_add_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/info_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="Please Add Clear Image"
+            android:textColor="@color/light_blue_A200"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pp_size_pic" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout="@layout/fragment_front_citizenship" />
-    <fragment
-        android:id="@+id/fragment2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-       class= "com.example.readcitizenshipcard.ui.FragmentPpSizePhoto"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment1"
-        tools:layout="@layout/fragment_pp_size_photo" />
+        app:layout_constraintBottom_toBottomOf="parent"/>
     <Button
         android:id="@+id/done_btn"
-        android:layout_width="350dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:background="@drawable/button_background"
-        android:gravity="center"
         android:text="Done"
-        android:textAllCaps="false"
+        android:textSize="15sp"
+        android:layout_margin="10dp"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:gravity="center"
+        android:enabled="false"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/const_pp_size_layout" />
+        app:layout_constraintTop_toBottomOf="@+id/const_pp_size_layout">
+    </Button>
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
