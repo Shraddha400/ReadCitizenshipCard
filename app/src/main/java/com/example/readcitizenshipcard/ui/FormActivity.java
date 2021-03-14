@@ -57,6 +57,7 @@ import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.widget.Autocomplete;
 import com.google.android.libraries.places.widget.AutocompleteActivity;
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -91,7 +92,7 @@ public class FormActivity extends AppCompatActivity implements OnMapReadyCallbac
     double lat1 = 0, long1 = 0, lat2 = 0, long2 = 0;
     double startlat = 0, startlong = 0, endlat = 0, endlong = 0;
     int flag = 0;
-    Bitmap bmp, scaledBMP;
+    Bitmap bmp, scaledBMP,bmp2,scaledBmp2;
     DateFormat dateFormat;
     private TextInputEditText nameInputTextField;
     private TextInputEditText addressInputEditText;
@@ -164,7 +165,8 @@ public class FormActivity extends AppCompatActivity implements OnMapReadyCallbac
         submitButton = findViewById(R.id.submit_button);
         bmp = BitmapFactory.decodeResource(getResources(), R.drawable.title_back);
         scaledBMP = Bitmap.createScaledBitmap(bmp, pageWidth, 518, false);
-
+        bmp2 = BitmapFactory.decodeResource(getResources(),R.drawable.boy1);
+        scaledBmp2 =  Bitmap.createScaledBitmap(bmp2, 320, 300, false);
         //store data in string
         String citznumber_str = getIntent().getStringExtra("citizenshipnumber");
         String sex_str = getIntent().getStringExtra("sex");
@@ -179,7 +181,7 @@ public class FormActivity extends AppCompatActivity implements OnMapReadyCallbac
         String permanentaddressarea_str = getIntent().getStringExtra("permanentaddressarea");
         String permanentaddressward_str = getIntent().getStringExtra("permanentaddressward");
 // set Into view
-        citizenshipNumber.setText(MessageFormat.format("Citizenship Number: {0}", citznumber_str));
+        citizenshipNumber.setText(citznumber_str);
         nameInputTextField.setText(fullname_str);
         pdaddressInputEditText.setText(permanentaddressdistrict_str);
         panameInputTextField.setText(permanentaddressarea_str);
@@ -270,58 +272,92 @@ public class FormActivity extends AppCompatActivity implements OnMapReadyCallbac
                     PdfDocument.Page mypage1 = myPdfDocument.startPage(myPageInfo1);
                     Canvas canvas = mypage1.getCanvas();
                     canvas.drawBitmap(scaledBMP, 0, 0, myPaint);
-                    titlePaint.setTextAlign(Paint.Align.CENTER);
-                    titlePaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
-                    titlePaint.setTextSize(70);
-                    canvas.drawText("EasyKYC", pageWidth / 2, 270, titlePaint);
+                    canvas.drawBitmap(scaledBmp2,pageWidth-360,pageHeight-1820,myPaint);
 
-                    myPaint.setColor(Color.rgb(0, 113, 188));
+//                    titlePaint.setTextAlign(Paint.Align.CENTER);
+//                    titlePaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+//                    titlePaint.setTextSize(70);
+//                    canvas.drawText("EasyKYC", pageWidth / 2, 270, titlePaint);
+
+                    myPaint.setColor(Color.rgb(255, 255, 255));
                     myPaint.setTextSize(30f);
                     myPaint.setTextAlign(Paint.Align.RIGHT);
                     canvas.drawText("Call: +977-9843567568", 1160, 40, myPaint);
                     canvas.drawText("01-4339182", 1160, 80, myPaint);
 
                     titlePaint.setTextAlign(Paint.Align.CENTER);
-                    titlePaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.ITALIC));
+                    titlePaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
                     titlePaint.setTextSize(70);
-                    canvas.drawText("FORM", pageWidth / 2, 500, titlePaint);
+
+                    canvas.drawText("FORM", pageWidth / 2, 600, titlePaint);
+                    myPaint.setColor(Color.rgb(0, 113, 118));
+                    myPaint.setTextSize(30f);
                     dateFormat = new SimpleDateFormat("dd/mm/yy");
-                    canvas.drawText("Date: " + dateFormat.format(dateObj), pageWidth - 20, 640, myPaint);
+                    canvas.drawText("Date: " + dateFormat.format(dateObj), pageWidth - 20, 600, myPaint);
                     dateFormat = new SimpleDateFormat("hh:mm:ss");
-                    canvas.drawText("Time: " + dateFormat.format(dateObj), pageWidth - 20, 690, myPaint);
+                    canvas.drawText("Time: " + dateFormat.format(dateObj), pageWidth - 20, 650, myPaint);
 
-                    myPaint.setStyle(Paint.Style.STROKE);
-                    myPaint.setStrokeWidth(2);
-                    canvas.drawRect(10, 200, myPageInfo1.getPageWidth() - 10, 300, myPaint);
-                    canvas.drawLine(85, 200, 85, 300, myPaint);
-                    canvas.drawLine(163, 200, 163, 300, myPaint);
-
-                    myPaint.setStrokeWidth(0);
-                    myPaint.setStyle(Paint.Style.FILL);
-                    canvas.drawText("Photo", 35, 250, myPaint);
-                    canvas.drawText("Photo", 110, 250, myPaint);
-                    canvas.drawText("Photo", 190, 250, myPaint);
+//for photo frame
+//                    myPaint.setStyle(Paint.Style.STROKE);
+//                    myPaint.setStrokeWidth(2);
+//                    myPaint.setColor(Color.BLACK);
+//                    canvas.drawRect(200, 700, myPageInfo1.getPageWidth() - 10, 300, myPaint);
+//                    canvas.drawLine(85, 700, 85, 300, myPaint);
+//                    canvas.drawLine(163, 700, 163, 300, myPaint);
+//for photo text
+//                    myPaint.setStrokeWidth(0);
+//                    myPaint.setStyle(Paint.Style.FILL);
+//                    myPaint.setColor(Color.BLACK);
+//                    canvas.drawText("Photo", 35, 700, myPaint);
+//                    canvas.drawText("Photo", 110, 700, myPaint);
+//                    canvas.drawText("Photo", 190, 700, myPaint);
+//for text inside strokes
 
                     myPaint.setTextAlign(Paint.Align.LEFT);
-                    myPaint.setTextSize(8.0f);
+                    myPaint.setTextSize(60);
                     myPaint.setColor(Color.BLACK);
 
-                    int startXPosition = 10;
-                    int startYPosition = 100;
+                    int startXPosition = 20;
+                    int startYPosition = 800;
                     int endXPosition = myPageInfo1.getPageWidth() - 10;
 
-                    for (int i = 0; i < 5; i++) {
+                    for (int i = 0; i < 11; i++) {
                         canvas.drawText(informationArray[i], startXPosition, startYPosition, myPaint);
-                        canvas.drawLine(startXPosition, startYPosition + 3, endXPosition, startYPosition + 3, myPaint);
-                        startYPosition += 20;
-                    }
-                    canvas.drawLine(80, 92, 80, 190, myPaint);
 
+//                        canvas.drawLine(startXPosition, startYPosition + 3, endXPosition, startYPosition + 3, myPaint);
+                        startYPosition += 60;
+                    }
+                    myPaint.setTextAlign(Paint.Align.LEFT);
+                    myPaint.setTextSize(50);
+                    myPaint.setColor(Color.BLACK);
+                    myPaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.ITALIC));
+                    int startRXposition = 800;
+                    int startRYposition = 800;
+                    canvas.drawText(":"+ citizenshipNumber.getText().toString(), startRXposition, startRYposition, myPaint);
+                    canvas.drawText(":"+ nameInputTextField.getText().toString(), startRXposition, startRYposition + 60, myPaint);
+                    canvas.drawText(":"+ td.getText().toString(), startRXposition, startRYposition+120, myPaint);
+                    canvas.drawText(":"+ ta.getText().toString(), startRXposition, startRYposition+180, myPaint);
+                    canvas.drawText(":"+ tw.getText().toString(), startRXposition, startRYposition+240, myPaint);
+                    canvas.drawText(":"+ pdaddressInputEditText.getText().toString(), startRXposition, startRYposition+300, myPaint);
+                    canvas.drawText(":"+ panameInputTextField.getText().toString(), startRXposition, startRYposition+360, myPaint);
+                    canvas.drawText(":"+ pwaddressInputEditText.getText().toString(), startRXposition, startRYposition+420, myPaint);
+                    canvas.drawText(":"+ year.getText().toString(), startRXposition, startRYposition+480, myPaint);
+                    canvas.drawText(":"+ month.getText().toString(), startRXposition, startRYposition+540, myPaint);
+                    canvas.drawText(":"+ day.getText().toString(), startRXposition, startRYposition+600, myPaint);
+
+
+
+//                    canvas.drawLine(100, 92, 80, 190, myPaint);
                     myPdfDocument.finishPage(mypage1);
                     File file = new File(Environment.getExternalStorageDirectory(), "/KYC.pdf");
                     try {
                         myPdfDocument.writeTo(new FileOutputStream(file));
-
+                        View parentLayout = findViewById(android.R.id.content);
+                        Snackbar snackbar = Snackbar.make(parentLayout, "Your .pdf file is ready !! ", Snackbar.LENGTH_SHORT);
+                        snackbar.setBackgroundTint(Color.GREEN);
+                        snackbar.setDuration(2000);
+                        snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
+                        snackbar.show();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -331,8 +367,6 @@ public class FormActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
     }
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

@@ -122,7 +122,6 @@ public class BackTextRecogActivity extends AppCompatActivity {
                                 doneBtn2.setEnabled(false);
                                 doneBtn2.setText("Done");
                                 doneBtn2.setTextColor(Color.WHITE);
-
                             }
                             View parentLayout = findViewById(android.R.id.content);
                             Snackbar snackbar = Snackbar.make(parentLayout, "unsuccessful To detected Text!!! ", Snackbar.LENGTH_LONG);
