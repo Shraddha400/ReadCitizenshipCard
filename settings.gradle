@@ -1,2 +1,4 @@
+include ':scanlibrary'
+include ':opencv'
 include ':app'
 rootProject.name = "ReadCitizenshipCard"

@@ -6,10 +6,14 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -23,9 +27,17 @@ import com.example.readcitizenshipcard.network.RetrofitClientInstances;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
+import com.scanlibrary.ScanActivity;
+import com.scanlibrary.ScanConstants;
 import com.theartofdev.edmodo.cropper.CropImage;
 
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.URI;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -41,6 +53,9 @@ public class BackTextRecogActivity extends AppCompatActivity {
     private Button doneBtn2;
     private ImageView backcitizenshipImage;
     ProgressBar progress2;
+    Bitmap bitmap = null;
+    int REQUEST_CODE = 99;
+    byte[] bitmapdata;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,10 +70,10 @@ public class BackTextRecogActivity extends AppCompatActivity {
                 progress2.setVisibility(View.VISIBLE);
                 doneBtn2.setText("Please Wait");
                 doneBtn2.setEnabled(false);
-                RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), fileBack);
+                RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), bitmapdata);
                 MultipartBody.Part body = MultipartBody.Part.createFormData(
                         "citizenshipback",
-                        fileBack.getName(),
+                        String.valueOf(bitmapdata),
                         requestFile);
                 RequestBody citizenship = RequestBody.create(MediaType.parse("multipart/form-data"), "yourNAME");
                 ApiService apiService = RetrofitClientInstances.getRetrofitInstance().create(ApiService.class);
@@ -89,27 +104,27 @@ public class BackTextRecogActivity extends AppCompatActivity {
                             String pAddressDISTRICT = response.body().getPAddressDistrict();
                             String pAddressAREA = response.body().getPAddressArea();
                             String pAddressWARD = response.body().getPAddressWardNo();
-                            new Handler().postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Intent move = new Intent(
-                                            BackTextRecogActivity.this,
-                                            FormActivity.class);
-                                    move.putExtra("citizenshipnumber", citizenshipNUMBER);
-                                    move.putExtra("sex", sex);
-                                    move.putExtra("fullname", fullNAME);
-                                    move.putExtra("dobyear", dobYEAR);
-                                    move.putExtra("dobmonth", dobMONTH);
-                                    move.putExtra("dobday", dobDAY);
-                                    move.putExtra("birthpalcedistrict", birthPlaceDistrict);
-                                    move.putExtra("birthplacearea", birthPlaceArea);
-                                    move.putExtra("birthplaceward", birthPlaceWARD);
-                                    move.putExtra("permanentaddressdistrict", pAddressDISTRICT);
-                                    move.putExtra("permanentaddressarea", pAddressAREA);
-                                    move.putExtra("permanentaddressward", pAddressWARD);
-                                    startActivity(move);
-                                }
-                            }, 2000);
+//                            new Handler().postDelayed(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    Intent move = new Intent(
+//                                            BackTextRecogActivity.this,
+//                                            FormActivity.class);
+//                                    move.putExtra("citizenshipnumber", citizenshipNUMBER);
+//                                    move.putExtra("sex", sex);
+//                                    move.putExtra("fullname", fullNAME);
+//                                    move.putExtra("dobyear", dobYEAR);
+//                                    move.putExtra("dobmonth", dobMONTH);
+//                                    move.putExtra("dobday", dobDAY);
+//                                    move.putExtra("birthpalcedistrict", birthPlaceDistrict);
+//                                    move.putExtra("birthplacearea", birthPlaceArea);
+//                                    move.putExtra("birthplaceward", birthPlaceWARD);
+//                                    move.putExtra("permanentaddressdistrict", pAddressDISTRICT);
+//                                    move.putExtra("permanentaddressarea", pAddressAREA);
+//                                    move.putExtra("permanentaddressward", pAddressWARD);
+//                                    startActivity(move);
+//                                }
+//                            }, 2000);
 
 
                         } else{
@@ -145,15 +160,15 @@ public class BackTextRecogActivity extends AppCompatActivity {
 
             }
         });
-        backcitizenshipImage = findViewById(R.id.citizenship_back_pic);
+        backcitizenshipImage = findViewById(R.id.citizenship_back_pic1);
         backcitizenshipImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ImagePicker.Companion.with(BackTextRecogActivity.this)
-                        .crop()                    //Crop image(Optional), Check Customization for more option
-                        .compress(1024)            //Final image size will be less than 1 MB(Optional)
-                        .maxResultSize(1080, 1080)    //Final image resolution will be less than 1080 x 1080(Optional)
-                        .start(101);
+
+                int preference = ScanConstants.OPEN_MEDIA;
+                Intent intent = new Intent(BackTextRecogActivity.this, ScanActivity.class);
+                intent.putExtra(ScanConstants.OPEN_INTENT_PREFERENCE, preference);
+                startActivityForResult(intent, REQUEST_CODE);
             }
         });
     }
@@ -161,13 +176,22 @@ public class BackTextRecogActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 101 && resultCode == Activity.RESULT_OK) {
+        if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+             fileUriBack = data.getExtras().getParcelable(ScanConstants.SCANNED_RESULT);
 
-            fileUriBack = data.getData();
-            backcitizenshipImage.setImageURI(fileUriBack);
-            fileBack = ImagePicker.Companion.getFile(data);
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), fileUriBack);
+                getContentResolver().delete(fileUriBack, null, null);
+                backcitizenshipImage.setImageBitmap(bitmap);
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 0 , bos); // YOU can also save it in JPEG
+                 bitmapdata = bos.toByteArray();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
-doneBtn2.setEnabled(true);
         }
+        doneBtn2.setEnabled(true);
     }
+
 }

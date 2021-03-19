@@ -34,8 +34,8 @@ import com.example.readcitizenshipcard.network.RetrofitClientInstances;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
-import com.orhanobut.hawk.Hawk;
-import com.theartofdev.edmodo.cropper.CropImage;
+import com.scanlibrary.ScanActivity;
+import com.scanlibrary.ScanConstants;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -45,6 +45,7 @@ import kotlinx.coroutines.Delay;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import pl.droidsonroids.gif.GifImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button doneBtn;
     private ImageView ppSizeImage;
     private ImageView frontcitizenshipImage;
+    GifImageView arrow,arrow2,arrow3 ;
     private Uri fileUri1,fileUri2;
     private File file1,file2;
     File fileBack;
@@ -65,7 +67,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView backcitizenshipImage;
 //    ProgressBar progress2;
     ProgressBar progressbar1;
-
+    int REQUEST_CODE1=101;
+    int REQUEST_CODE2 = 102;
+    int REQUEST_CODE3 = 103;
+Bitmap bitmap1,bitmap2,bitmap3;
+byte[] bitmapdata1,bitmapdata3,bitmapdata2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +80,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
         doneBtn = findViewById(R.id.done_btn);
+        arrow = findViewById(R.id.arrow1);
+        arrow2 = findViewById(R.id.arrow2);
+        arrow3 = findViewById(R.id.arrow3);
         progressbar1 = findViewById(R.id.progress_bar_1);
        // progress2 = findViewById(R.id.progress_bar_2);
         //doneBtn2 = findViewById(R.id.done_btn2);
@@ -82,33 +91,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         frontcitizenshipImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ImagePicker.Companion.with(MainActivity.this)
-                        .crop()	    			//Crop image(Optional), Check Customization for more option
-                        .compress(1024)			//Final image size will be less than 1 MB(Optional)
-                        .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
-                        .start(101);
+//                ImagePicker.Companion.with(MainActivity.this)
+//                        .crop()	    			//Crop image(Optional), Check Customization for more option
+//                        .compress(1024)			//Final image size will be less than 1 MB(Optional)
+//                        .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
+//                        .start(101);
+                int preference = ScanConstants.PICKFILE_REQUEST_CODE;
+                Intent intent = new Intent(MainActivity.this, ScanActivity.class);
+                intent.putExtra(ScanConstants.OPEN_INTENT_PREFERENCE, preference);
+                startActivityForResult(intent, REQUEST_CODE1);
             }
         });
         backcitizenshipImage = findViewById(R.id.citizenship_back_pic);
         backcitizenshipImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ImagePicker.Companion.with(MainActivity.this)
-                        .crop()                    //Crop image(Optional), Check Customization for more option
-                        .compress(1024)            //Final image size will be less than 1 MB(Optional)
-                        .maxResultSize(1080, 1080)    //Final image resolution will be less than 1080 x 1080(Optional)
-                        .start(111);
+//                ImagePicker.Companion.with(MainActivity.this)
+//                        .crop()                    //Crop image(Optional), Check Customization for more option
+//                        .compress(1024)            //Final image size will be less than 1 MB(Optional)
+//                        .maxResultSize(1080, 1080)    //Final image resolution will be less than 1080 x 1080(Optional)
+//                        .start(111);
+                int preference = ScanConstants.PICKFILE_REQUEST_CODE;
+                Intent intent = new Intent(MainActivity.this, ScanActivity.class);
+                intent.putExtra(ScanConstants.OPEN_INTENT_PREFERENCE, preference);
+                startActivityForResult(intent, REQUEST_CODE3);
             }
         });
         ppSizeImage = findViewById(R.id.pp_size_pic);
         ppSizeImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ImagePicker.Companion.with(MainActivity.this)
-                        .crop()	    			//Crop image(Optional), Check Customization for more option
-                        .compress(1024)//Final image size will be less than 1 MB(Optional)
-                        .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
-                        .start(102);
+                int preference = ScanConstants.PICKFILE_REQUEST_CODE;
+                Intent intent = new Intent(MainActivity.this, ScanActivity.class);
+                intent.putExtra(ScanConstants.OPEN_INTENT_PREFERENCE, preference);
+                startActivityForResult(intent, REQUEST_CODE2);
 
             }
         });
@@ -135,23 +151,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         doneBtn.setText("Please Wait");
         doneBtn.setEnabled(false);
         RequestBody requestFile =
-                RequestBody.create(MediaType.parse("multipart/form-data"), file1);
+                RequestBody.create(MediaType.parse("multipart/form-data"), bitmapdata1);
         MultipartBody.Part body =
-                MultipartBody.Part.createFormData("citizenshipfront", file1.getName(), requestFile);
+                MultipartBody.Part.createFormData("citizenship_front", String.valueOf(bitmapdata1), requestFile);
         RequestBody citizenshipfront1 =
                 RequestBody.create(MediaType.parse("multipart/form-data"), "Your Name");
         //for pp size image
         RequestBody requestFile2 =
-                RequestBody.create(MediaType.parse("multipart/form-data"), file2);
+                RequestBody.create(MediaType.parse("multipart/form-data"), bitmapdata2);
         MultipartBody.Part body2 =
-                MultipartBody.Part.createFormData("photo", file2.getName(), requestFile2);
+                MultipartBody.Part.createFormData("photo", String.valueOf(bitmap2), requestFile2);
         RequestBody ppsize =
                 RequestBody.create(MediaType.parse("multipart/form-data"), "Your Name");
 
-        RequestBody requestFileB = RequestBody.create(MediaType.parse("multipart/form-data"), fileBack);
+        RequestBody requestFileB = RequestBody.create(MediaType.parse("multipart/form-data"), bitmapdata3);
         MultipartBody.Part bodyB = MultipartBody.Part.createFormData(
-                "citizenshipback",
-                fileBack.getName(),
+                "citizenship_back",
+                String.valueOf(bitmapdata3),
                 requestFileB);
         RequestBody citizenshipB = RequestBody.create(MediaType.parse("multipart/form-data"), "yourNAME");
         ApiService apiService = RetrofitClientInstances.getRetrofitInstance().create(ApiService.class);
@@ -233,6 +249,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                                     move.putExtra("permanentaddressarea", pAddressAREA);
                                                     move.putExtra("permanentaddressward", pAddressWARD);
                                                     startActivity(move);
+
                                                 }
                                             }, 4000);
 
@@ -317,27 +334,64 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 101 && resultCode == Activity.RESULT_OK) {
+        if ((requestCode == REQUEST_CODE1) && resultCode == Activity.RESULT_OK) {
+//            fileUri1 = data.getData();
+//            frontcitizenshipImage.setImageURI(fileUri1);
+//            file1 = ImagePicker.Companion.getFile(data);
+            fileUri1 = data.getExtras().getParcelable(ScanConstants.SCANNED_RESULT);
 
-            assert data != null;
-            fileUri1 = data.getData();
-         frontcitizenshipImage.setImageURI(fileUri1);
-            file1 = ImagePicker.Companion.getFile(data);
+            try {
+                bitmap1 = MediaStore.Images.Media.getBitmap(getContentResolver(), fileUri1);
+                getContentResolver().delete(fileUri1, null, null);
+                frontcitizenshipImage.setImageBitmap(bitmap1);
+                arrow.setVisibility(GONE);
+                arrow2.setVisibility(VISIBLE);
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                bitmap1.compress(Bitmap.CompressFormat.PNG, 0 , bos); // YOU can also save it in JPEG
+                bitmapdata1 = bos.toByteArray();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
-
-
-        } else if (requestCode == 111 && resultCode == Activity.RESULT_OK) {
-
-            assert data != null;
-            fileUriBack = data.getData();
-            backcitizenshipImage.setImageURI(fileUriBack);
-            fileBack = ImagePicker.Companion.getFile(data);
         }
-        else if(requestCode == 102 && resultCode == Activity.RESULT_OK) {
-            assert data != null;
-            fileUri2= data.getData();
-            ppSizeImage.setImageURI(fileUri2);
-            file2= ImagePicker.Companion.getFile(data);
+        else if (requestCode == REQUEST_CODE3 && resultCode == Activity.RESULT_OK) {
+
+//            assert data != null;
+//            fileUriBack = data.getData();
+//            backcitizenshipImage.setImageURI(fileUriBack);
+//            fileBack = ImagePicker.Companion.getFile(data);
+            fileUriBack = data.getExtras().getParcelable(ScanConstants.SCANNED_RESULT);
+            try {
+                bitmap3 = MediaStore.Images.Media.getBitmap(getContentResolver(), fileUriBack);
+                getContentResolver().delete(fileUriBack, null, null);
+                backcitizenshipImage.setImageBitmap(bitmap3);
+                arrow2.setVisibility(GONE);
+                arrow3.setVisibility(VISIBLE);
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                bitmap3.compress(Bitmap.CompressFormat.PNG, 0 , bos); // YOU can also save it in JPEG
+                bitmapdata3 = bos.toByteArray();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else if(requestCode == REQUEST_CODE2 && resultCode == Activity.RESULT_OK) {
+//            assert data != null;
+//            fileUri2= data.getData();
+//            ppSizeImage.setImageURI(fileUri2);
+//            file2= ImagePicker.Companion.getFile(data);
+            fileUri2 = data.getExtras().getParcelable(ScanConstants.SCANNED_RESULT);
+
+            try {
+                bitmap2 = MediaStore.Images.Media.getBitmap(getContentResolver(), fileUri2);
+                getContentResolver().delete(fileUri2, null, null);
+                ppSizeImage.setImageBitmap(bitmap2);
+                arrow3.setVisibility(GONE);
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                bitmap2.compress(Bitmap.CompressFormat.PNG, 0 , bos); // YOU can also save it in JPEG
+                bitmapdata2 = bos.toByteArray();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             doneBtn.setEnabled(true);
         }
     }

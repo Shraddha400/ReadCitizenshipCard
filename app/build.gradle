@@ -26,6 +26,13 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    sourceSets {
+        main {
+            jni {
+                srcDirs 'src\\main\\jni', 'src\\main\\jniLibs'
+            }
+        }
+    }
 }
 
 dependencies {
@@ -54,10 +61,12 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     /**
      * Scan Library Open CV*/
-
+    
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0'
+    implementation project(path: ':opencv')
+    implementation project(path: ':scanlibrary')
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     testImplementation 'junit:junit:4.+'
     implementation 'com.github.jd-alexander:library:1.1.0'
@@ -65,7 +74,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.google.android.gms:play-services-location:18.0.0'
     implementation 'com.google.android.libraries.places:places:2.4.0'
-
     implementation 'com.github.dhaval2404:imagepicker-support:1.7.1'
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
 }
 apply plugin: 'com.android.application'

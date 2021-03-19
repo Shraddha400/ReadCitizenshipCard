@@ -17,9 +17,9 @@ import retrofit2.http.Query;
 public interface ApiService {
     @Multipart
     @POST(Constants.FACE)
-    Call<ImageResponse> uploadImage(@Part MultipartBody.Part part, @Part("citizenshipfront") RequestBody requestBody,
+    Call<ImageResponse> uploadImage(@Part MultipartBody.Part part, @Part("citizenship_front") RequestBody requestBody,
                                     @Part MultipartBody.Part part2, @Part("photo") RequestBody requestBody2);
     @Multipart
     @POST(Constants.TEXT)
-    Call<TextResponse> uploadText(@Part MultipartBody.Part part, @Part("citizenshipback") RequestBody requestBody);
+    Call<TextResponse> uploadText(@Part MultipartBody.Part part, @Part("citizenship_back") RequestBody requestBody);
 }

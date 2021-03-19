@@ -1,17 +1,15 @@
 package com.example.readcitizenshipcard.ui;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
 import android.Manifest;
+
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -22,14 +20,11 @@ import android.graphics.pdf.PdfDocument;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Environment;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,19 +58,13 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.lang.reflect.Array;
-import java.lang.reflect.Type;
 import java.text.DateFormat;
-import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
-
-import javax.net.ssl.SSLEngineResult;
 
 public class FormActivity extends AppCompatActivity implements OnMapReadyCallback, RoutingListener, AdapterView.OnItemSelectedListener {
     //to get location permissions.
@@ -662,7 +651,7 @@ public class FormActivity extends AppCompatActivity implements OnMapReadyCallbac
                     });
             errorDialog.show();
         } else {
-            Toast.makeText(this, "All is good", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this, "All is good", Toast.LENGTH_SHORT).show();
         }
     }
 

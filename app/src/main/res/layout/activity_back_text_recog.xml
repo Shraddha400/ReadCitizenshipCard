@@ -29,7 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
         <ImageView
-            android:id="@+id/citizenship_back_pic"
+            android:id="@+id/citizenship_back_pic1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scaleType="fitCenter"
@@ -48,7 +48,7 @@
             android:layout_margin="5dp"
             android:textSize="12sp"
             android:textColor="@color/light_blue_A200"
-            app:layout_constraintTop_toBottomOf="@+id/citizenship_back_pic"
+            app:layout_constraintTop_toBottomOf="@+id/citizenship_back_pic1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
